@@ -1,1 +1,20 @@
-test
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      fetch("https://www.nbp.pl/kursy/xml/lasta.xml")
+        .then((response) => response.text())
+        .then((data) => {
+          var parser = new DOMParser();
+          var xmlDoc = parser.parseFromString(data, "text/xml");
+          console.log(xmlDoc)
+        })
+        .catch((error) => console.error("Błąd pobierania XML:", error));
+    </script>
+  </body>
+</html>
